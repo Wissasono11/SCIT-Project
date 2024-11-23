@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Study Club Informatika 2024 - Mboh</title>
+
+    <!-- my fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <!-- navbar section start -->
+    <nav class="navbar">
+      <div class="navbar-kiri">
+        <ul>
+            <li>
+                <a href="#home">Home</a>
+                <a href="#informasi ">Informasi</a>
+                <a href="#about">About</a>
+                <a href="#kontak">Kontak</a>
+            </li>
+        </ul>
+      </div>
+      <div class="navbar-kanan">
+        <img src="assets/hamburger.png" alt="hamburger-menu" class="hamburger">
+      </div>
+      </div>
+    </nav>
+    <!-- navbar section end -->
+
+    <!-- hero section start -->
+     <div class="hero">
+        
+     </div>
+    <!-- hero section end -->
+
+    <!-- main section -->
+     <main>
+        <h1 class="judul">Informasi</h1>
+        <div class="search-bar">
+            <input type="text" class="search" id="search" placeholder="arep golek opo...">
+        </div>
+        <div class="news-container" id="news-container">
+            <!-- <div class="card-news">
+                <img src="assets/uin.jpg" alt="" class="foto">
+                <h3>Judul Berita</h3>
+                <a href="https://instagram.com" target="_blank">Read More</a>
+                <p>Deskripsi berita</p>
+                <p>tanggal: 23 Nov 2024</p>
+            </div>
+            <div class="card-news">
+                <img src="assets/uin.jpg" alt="" class="foto">
+                <h3>Judul Berita</h3>
+                <a href="https://instagram.com" target="_blank">Read More</a>
+                <p>Deskripsi berita</p>
+                <p>tanggal: 23 Nov 2024</p>
+            </div>
+            <div class="card-news">
+                <img src="assets/uin.jpg" alt="" class="foto">
+                <h3>Judul Berita</h3>
+                <a href="https://instagram.com" target="_blank">Read More</a>
+                <p>Deskripsi berita</p>
+                <p>tanggal: 23 Nov 2024</p>
+            </div>
+            <div class="card-news">
+                <img src="assets/uin.jpg" alt="" class="foto">
+                <h3>Judul Berita</h3>
+                <a href="https://instagram.com" target="_blank">Read More</a>
+                <p>Deskripsi berita</p>
+                <p>tanggal: 23 Nov 2024</p>
+            </div>
+            <div class="card-news">
+                <img src="assets/uin.jpg" alt="" class="foto">
+                <h3>Judul Berita</h3>
+                <a href="https://instagram.com" target="_blank">Read More</a>
+                <p>Deskripsi berita</p>
+                <p>tanggal: 23 Nov 2024</p>
+            </div> -->
+        </div>
+
+        <!-- api sections start-->
+            <script>
+                    const apiURL = "https://api-berita-indonesia.vercel.app/antara/olahraga";
+                    const newsContainer = document.getElementById("news-container");
+                    const searchInput = document.getElementById("search");
+            
+                    // Fetch data dari API
+                    async function fetchNews() {
+                        try {
+                            const response = await fetch(apiURL);
+                            const data = await response.json();
+                            renderNews(data.data.posts);
+                        } catch (error) {
+                            console.error("Error fetching news:", error);
+                            newsContainer.innerHTML = "<p>Gagal memuat berita.</p>";
+                        }
+                    }
+            
+                    // Render berita ke halaman
+                    function renderNews(newsList) {
+                        newsContainer.innerHTML = "";
+                        newsList.forEach(news => {
+                            const newsCard = `<div class="card-news">
+                                    <img src="${news.thumbnail || 'https://via.placeholder.com/450x200'}" alt="Thumbnail" class="foto">
+                                    <div class="news-content">
+                                        <h3>${news.title}</h3>
+                                        <p>${news.description}</p>
+                                        <a href="${news.link}" target="_blank">Read More</a>
+                                        <p class="pub-date">Published: ${news.pubDate}</p>
+                                    </div>
+                                </div>`;
+                            newsContainer.innerHTML += newsCard;
+                        });
+                    }
+            
+                    // Filter berita berdasarkan input pencarian
+                    searchInput.addEventListener("input", async () => {
+                        const searchText = searchInput.value.toLowerCase();
+                        const response = await fetch(apiURL);
+                        const data = await response.json();
+                        const filteredNews = data.data.posts.filter(news =>
+                            news.title.toLowerCase().includes(searchText)
+                        );
+                        renderNews(filteredNews);
+                    });
+            
+                    // Panggil fetchNews saat halaman dimuat
+                    fetchNews();
+                </script>
+        <!-- api sections end-->
+    </main>
+  </body>
+</html>

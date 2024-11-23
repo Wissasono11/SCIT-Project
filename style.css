@@ -1,0 +1,92 @@
+* {
+  /* untuk reset semua agar padding dan margin menjadi 0 */
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+/* navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 50px; /* padding atas bawah 20px, kiri kanan 50px */
+  height: 25px;
+
+  /* buat nempelin navbar */
+  position: sticky; /* wajib dipake biar navbarnya nempel waktu discroll  */
+  top: 0;
+  left: 0;
+  background-color: gold;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.navbar-kiri {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-kiri li {
+  list-style: none;
+}
+.navbar-kiri li a {
+  color: #000;
+  text-decoration: none;
+  padding: 1rem 1rem;
+}
+
+.hamburger {
+  max-width: 40px;
+}
+
+/* hero section */
+.hero {
+  background-image: url(/assets/uin.jpg);
+  border-radius: 2rem;
+  height: 450px;
+  width: 90%;
+  background-repeat: no-repeat; /* biar gambar tidak berulang */
+  background-size: cover; /* biar gambar tidak pecah */
+  background-position: center; /* biar gambar posisinya di tengah */
+  background-attachment: fixed; /* biar gambar tidak ikut scroll */
+  margin: 0 auto; /* biar gambar di tengah */
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* main section */
+.judul {
+  text-align: center; /* text rata tengah */
+  margin: 40px;
+  font-size: 42px;
+}
+
+.search-bar {
+  display: grid; /* biar gausah pake align-items, justify content, ama  display flex */
+  place-items: center;
+}
+.search {
+  padding: 20px 40px;
+  width: 95%;
+  box-sizing: border-box;
+}
+
+.news-container {
+  display: flex;
+  gap: 20px; /* jarak antar card */
+  padding: 50px;
+  margin-top: 20px;
+  flex-wrap: wrap; /* biar ketika layar kecil, cardnya turun ke bawah */
+  justify-content: center; /* biar cardnya rata tengah */
+}
+.foto {
+  max-width: 400px;
+}
+
+.card-news {
+  max-width: 400px;
+  border: 1px solid grey;
+  border-radius: 10px;
+}
